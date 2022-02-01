@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import React from "react";
+import ReactDOM from "react-dom";
+import "./App.css";
+import { La, Ta } from "./Dict/dict.jsx";
+import GameRow from "./GameRow";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="">
+        {La[0]}
+        <GameRow word={La[0]} row={"a"} />
+        <GameRow word={La[0]} row={"b"} />
+        <GameRow word={La[0]} row={"c"} />
+        <GameRow word={La[0]} row={"d"} />
+        <GameRow word={La[0]} row={"e"} />
+        <GameRow word={La[0]} row={"f"} />
+      </div>
+    );
+  }
 }
 
 export default App;
