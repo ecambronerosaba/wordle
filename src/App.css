@@ -52,3 +52,22 @@ body {
   margin-bottom: 16px;
   margin-top: 64px;
 }
+
+.title input {
+  text-align: center;
+  color: #d8dadc;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 37px;
+  width: 64px;
+  height: 64px;
+  left: 20px;
+  top: 13px;
+
+  box-sizing: border-box;
+  margin: 4px;
+  background-color: black;
+  border: 2px solid #3a3a3c;
+}
