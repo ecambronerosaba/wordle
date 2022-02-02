@@ -1,8 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "./GameRow.css";
 import Tile from "./Tile";
-import $ from "jquery";
 
 class GameRow extends React.Component {
 	constructor(props) {
