@@ -7,35 +7,80 @@ import $ from "jquery";
 class Tile extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { normal: true, yellow: false, green: false };
+		this.state = {
+			normal: true,
+			yellow: false,
+			green: false,
+			wrong: false,
+			letter: "",
+		};
+		this.inputRef = React.createRef();
 	}
 
-	handleChange = (event) => {
-		// what
-		const { maxLength, value, name } = event.target;
-		const idx = this.props.word.indexOf(value);
-		if (value === "") {
-			this.setState({ normal: true, yellow: false, green: false });
-			return;
-		}
-		if (this.props.word.includes(value)) {
+	updateColors = (w) => {
+		const idx = this.props.word.indexOf(this.state.letter);
+		if (this.props.word.includes(this.state.letter)) {
 			if (idx === this.props.tile) {
 				this.setState({
 					normal: false,
 					yellow: false,
 					green: true,
+					wrong: false,
 				});
 			} else {
 				this.setState({
 					normal: false,
 					yellow: true,
 					green: false,
+					wrong: false,
 				});
 			}
 		} else {
-			this.setState({ normal: true, yellow: false, green: false });
+			this.setState({
+				normal: false,
+				yellow: false,
+				green: false,
+				wrong: true,
+			});
 		}
-		this.props.callback(event, this);
+	};
+
+	focus = () => {
+		if (this.inputRef.current) {
+			this.inputRef.current.focus();
+		}
+	};
+
+	onKeyDown = (e) => {
+		if (e.keyCode === 8 || e.keyCode === 46) {
+			this.props.prev(this.props.tile);
+		}
+		if (e.keyCode === 13) {
+			this.props.submitWord();
+		}
+	};
+
+	handleChange = (event) => {
+		let { maxLength, value, name } = event.target;
+		value = value.toLowerCase();
+		if (value === "") {
+			this.setState({
+				normal: true,
+				yellow: false,
+				green: false,
+				wrong: false,
+			});
+			return;
+		}
+		if (value.length === maxLength) {
+			this.setState({ letter: value });
+			this.props.updateWord(value);
+			this.props.next(this.props.tile);
+		}
+	};
+
+	makeUpperCase = (e) => {
+		e.target.value = ("" + e.target.value).toUpperCase();
 	};
 
 	render() {
@@ -46,11 +91,16 @@ class Tile extends React.Component {
 						{ normal: this.state.normal },
 						{ yellow: this.state.yellow },
 						{ green: this.state.green },
+						{ wrong: this.state.wrong },
+						"tile",
 					)}
 					type="text"
 					maxLength="1"
 					onChange={this.handleChange}
 					autoFocus={true}
+					ref={this.inputRef}
+					onKeyUp={this.onKeyDown}
+					onInput={this.makeUpperCase}
 				/>
 			</span>
 		);

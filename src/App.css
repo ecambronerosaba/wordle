@@ -32,7 +32,23 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  background-color: black;
+  text-align: center;
+}
+
+.title {
+  color: #d8dadc;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom: 16px;
+  margin-top: 64px;
 }

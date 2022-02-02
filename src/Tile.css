@@ -1,14 +1,40 @@
 .normal {
-	background-color: gray;
-	color: white;
+	background-color: black;
+	border: 2px solid #3a3a3c;
+}
+
+.wrong {
+	background: #3a3a3c;
+	border: 0px;
 }
 
 .yellow {
-	background-color: yellow;
-	color: white;
+	background-color: #b29f4c;
+	border: 0px;
 }
 
 .green {
-	background-color: green;
-	color: white;
+	background-color: #618b55;
+	border: 0px;
+}
+
+.tile {
+	text-align: center;
+	color: #d8dadc;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 32px;
+	line-height: 37px;
+	width: 64px;
+	height: 64px;
+	left: 20px;
+	top: 13px;
+
+	box-sizing: border-box;
+	margin: 4px;
+}
+
+.tile:focus {
+	outline: none;
 }
