@@ -1,8 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import classNames from "classnames";
 import "./Tile.css";
-import $ from "jquery";
 
 class Tile extends React.Component {
 	constructor(props) {
@@ -61,7 +59,7 @@ class Tile extends React.Component {
 	};
 
 	handleChange = (event) => {
-		let { maxLength, value, name } = event.target;
+		let { maxLength, value } = event.target;
 		value = value.toLowerCase();
 		if (value === "") {
 			this.setState({

@@ -1,6 +1,4 @@
-import logo from "./logo.svg";
 import React from "react";
-import ReactDOM from "react-dom";
 import "./App.css";
 import { La, Ta } from "./Dict/dict.jsx";
 import GameRow from "./GameRow";
@@ -23,7 +21,7 @@ class App extends React.Component {
     this.setState({ idx: this.state.idx + 1, passed: false });
     var inputElements = document.getElementsByTagName("input");
     for (var i = 0; i < inputElements.length; i++) {
-      if (inputElements[i].type == "text") {
+      if (inputElements[i].type === "text") {
         inputElements[i].value = "";
       }
     }
