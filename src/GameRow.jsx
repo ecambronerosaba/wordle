@@ -12,7 +12,7 @@ class GameRow extends React.Component {
 			React.createRef(),
 			React.createRef(),
 		];
-		this.state = { word: "" };
+		this.state = { word: "", passed: true };
 	}
 
 	reset = () => {
@@ -25,6 +25,7 @@ class GameRow extends React.Component {
 			});
 		}
 		this.setState({ word: "" });
+		this.setState({ passed: true });
 	};
 
 	updateColors = () => {
@@ -38,18 +39,17 @@ class GameRow extends React.Component {
 		for (let i = 0; i < 5; i++) {
 			w += this.tileRefs[i].current.state.letter;
 		}
-		this.setState({ word: w });
-		if (this.state.word.length < 5) {
+
+		if (w.length < 5) {
 			return;
 		}
-		if (
-			this.props.ta.includes(this.state.word) ||
-			this.props.la.includes(this.state.word)
-		) {
-			if (this.state.word === this.props.word) {
+		if (this.props.ta.includes(w) || this.props.la.includes(w)) {
+			if (w === this.props.word) {
 				this.props.passed();
 			}
+			this.setState({ passed: false });
 			this.updateColors();
+			this.props.check();
 		} else {
 			alert("Invalid guess");
 		}

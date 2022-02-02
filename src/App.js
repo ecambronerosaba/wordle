@@ -35,9 +35,21 @@ class App extends React.Component {
     this.setState({ pot_idx: e.target.value });
   };
 
+  check = () => {
+    var p = 0;
+    for (var i = 0; i < this.gameRowRefs.length; i++) {
+      if (!this.gameRowRefs[i].current.state.passed) {
+        p += 1;
+      }
+    }
+    if (p === 6) {
+      alert("The answer was:" + La[this.state.idx]);
+    }
+  };
+
   onSubmit = (e) => {
     if (e.keyCode === 13) {
-      this.setState({ idx: this.state.pot_idx });
+      this.setState({ idx: parseInt(this.state.pot_idx) });
     }
     var inputElements = document.getElementsByTagName("input");
     for (var i = 1; i < inputElements.length; i++) {
@@ -65,6 +77,7 @@ class App extends React.Component {
           la={La}
           passed={this.passed}
           ref={this.gameRowRefs[i]}
+          check={this.check}
         />,
       );
     }
@@ -74,6 +87,7 @@ class App extends React.Component {
           <span>WORDLE #</span>
           <span>
             <input
+              key={this.state.idx}
               onChange={this.onChange}
               onKeyUp={this.onSubmit}
               defaultValue={this.state.idx}

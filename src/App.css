@@ -70,4 +70,9 @@ body {
   margin: 4px;
   background-color: black;
   border: 2px solid #3a3a3c;
+  caret-color: transparent;
+}
+
+.title input:focus {
+  outline: none;
 }

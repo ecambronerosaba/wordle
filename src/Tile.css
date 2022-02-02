@@ -5,17 +5,17 @@
 
 .wrong {
 	background: #3a3a3c;
-	border: 0px;
+	border: 2px solid #3a3a3c;
 }
 
 .yellow {
 	background-color: #b29f4c;
-	border: 0px;
+	border: 2px solid #b29f4c;
 }
 
 .green {
 	background-color: #618b55;
-	border: 0px;
+	border: 2px solid #618b55;
 }
 
 .tile {
@@ -29,10 +29,9 @@
 	width: 64px;
 	height: 64px;
 	left: 20px;
-	top: 13px;
-
-	box-sizing: border-box;
+	top: 13px box-sizing border-box;
 	margin: 4px;
+	caret-color: transparent;
 }
 
 .tile:focus {
