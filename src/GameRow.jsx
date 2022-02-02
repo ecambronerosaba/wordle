@@ -34,6 +34,11 @@ class GameRow extends React.Component {
 	};
 
 	submitWord = (e) => {
+		var w = "";
+		for (let i = 0; i < 5; i++) {
+			w += this.tileRefs[i].current.state.letter;
+		}
+		this.setState({ word: w });
 		if (this.state.word.length < 5) {
 			return;
 		}

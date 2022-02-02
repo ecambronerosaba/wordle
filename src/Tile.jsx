@@ -50,11 +50,14 @@ class Tile extends React.Component {
 	};
 
 	onKeyDown = (e) => {
-		if (e.keyCode === 8 || e.keyCode === 46) {
+		if (e.keyCode === 8 || e.keyCode === 46 || e.keyCode === 39) {
 			this.props.prev(this.props.tile);
 		}
 		if (e.keyCode === 13) {
 			this.props.submitWord();
+		}
+		if (e.keyCode === 37) {
+			this.props.next();
 		}
 	};
 
@@ -72,7 +75,7 @@ class Tile extends React.Component {
 		}
 		if (value.length === maxLength) {
 			this.setState({ letter: value });
-			this.props.updateWord(value);
+			// this.props.updateWord(value);
 			this.props.next(this.props.tile);
 		}
 	};
